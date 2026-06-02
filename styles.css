@@ -1,0 +1,2133 @@
+/* ==========================================================================
+   MYSTIC TAROT - CSS DESIGN SYSTEM & IMMERSIVE AESTHETICS
+   ========================================================================== */
+
+/* 1. Design Tokens & Root Variables */
+:root {
+  --color-bg-darkest: #07050d;
+  --color-bg-dark: #0f0b20;
+  --color-bg-card: rgba(22, 17, 46, 0.6);
+  --color-border: rgba(230, 198, 135, 0.15);
+  --color-border-glow: rgba(230, 198, 135, 0.4);
+  
+  /* Mystical Accents */
+  --color-gold-light: #f7e7c4;
+  --color-gold-mid: #e6c687;
+  --color-gold-dark: #b89146;
+  --color-violet: #8c66ff;
+  --color-cyan: #00f0ff;
+  
+  /* Semantic Colors */
+  --color-success: #00e676;
+  --color-warning: #ffb300;
+  --color-text-main: #f0ecfa;
+  --color-text-muted: #a39eb5;
+  
+  /* Fonts */
+  --font-mystic: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif;
+  --font-body: 'Inter', 'Noto Sans KR', sans-serif;
+  
+  /* Animation Speeds */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slow: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 2. Global Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg-darkest);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+button, input {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 3. Mystical Cosmic Background Animation */
+.stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #171031 0%, var(--color-bg-darkest) 100%);
+}
+
+.stars, .twinkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stars {
+  background: #000 url('https://raw.githubusercontent.com/tztechno/streamlit-tarrot-reading/master/assets/star.png') repeat;
+  background-size: cover;
+  opacity: 0.35;
+}
+
+.twinkling {
+  background: transparent url('https://raw.githubusercontent.com/tztechno/streamlit-tarrot-reading/master/assets/star.png') repeat;
+  background-size: 50% 50%;
+  animation: move-twink-back 200s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes move-twink-back {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
+}
+
+/* 4. Immersive Glassmorphism Utility */
+.glass {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass:hover {
+  border-color: var(--color-border-glow);
+}
+
+/* 5. Typography & Glowing Text */
+.gold-text {
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-mid) 50%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 700;
+}
+
+h1, h2, h3, .logo-text {
+  font-family: var(--font-mystic);
+  letter-spacing: -0.02em;
+}
+
+/* 6. Layout: App Shell */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header & Nav */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(230, 198, 135, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  color: var(--color-gold-mid);
+  text-shadow: 0 0 10px rgba(230, 198, 135, 0.5);
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, var(--color-gold-mid) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.nav-link i {
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  color: var(--color-text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+  color: var(--color-gold-light);
+  background: rgba(230, 198, 135, 0.12);
+  border: 1px solid rgba(230, 198, 135, 0.25);
+  box-shadow: 0 0 15px rgba(230, 198, 135, 0.1);
+}
+
+/* Main Area */
+.app-main {
+  flex: 1;
+  padding: 3rem 0;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. Lobby (Home) Styles */
+.hero-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mystic-orb-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 2rem;
+}
+
+.mystic-orb {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 30% 30%, var(--color-violet) 0%, #120042 70%, #03001a 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  box-shadow: 0 0 40px 10px rgba(140, 102, 255, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: orb-glow 4s ease-in-out infinite alternate;
+}
+
+.mystic-ring {
+  width: 180px;
+  height: 180px;
+  border: 1px dashed var(--color-gold-mid);
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  animation: spin 30s linear infinite;
+  opacity: 0.4;
+}
+
+.mystic-card-floating {
+  width: 60px;
+  height: 100px;
+  background: var(--color-bg-dark);
+  border: 1px solid var(--color-gold-mid);
+  border-radius: 6px;
+  position: absolute;
+  top: 50px;
+  left: 70px;
+  transform: rotateY(0deg) rotateZ(12deg) translateY(-20px);
+  animation: float 6s ease-in-out infinite;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+
+.card-float-front {
+  width: 100%;
+  height: 100%;
+  background: url('https://raw.githubusercontent.com/metabismuth/tarot-json/master/cards/m00.jpg') no-repeat center;
+  background-size: cover;
+  border-radius: 4px;
+}
+
+@keyframes orb-glow {
+  0% { box-shadow: 0 0 30px 5px rgba(140, 102, 255, 0.3); }
+  100% { box-shadow: 0 0 50px 25px rgba(140, 102, 255, 0.6), 0 0 80px 10px rgba(0, 240, 255, 0.2); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: rotateY(0deg) rotateZ(12deg) translateY(-10px); }
+  50% { transform: rotateY(180deg) rotateZ(12deg) translateY(10px); }
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Button UI */
+.btn {
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: var(--transition-fast);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-gold-mid) 0%, var(--color-gold-dark) 100%);
+  color: #120d04;
+  box-shadow: 0 4px 15px rgba(230, 198, 135, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 198, 135, 0.5);
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-mid) 100%);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-main);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(230, 198, 135, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-lg {
+  padding: 1rem 2.2rem;
+  font-size: 1.1rem;
+}
+
+.btn-sm {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.info-card {
+  padding: 2.5rem;
+  text-align: center;
+  transition: var(--transition-normal);
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(140, 102, 255, 0.15);
+}
+
+.info-icon {
+  font-size: 2.2rem;
+  color: var(--color-gold-mid);
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 10px rgba(230, 198, 135, 0.3);
+}
+
+.info-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+}
+
+.info-card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* 8. Reading Room (Interactive Tarot Table) */
+.reading-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.reading-container.active-drawn {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.tarot-table {
+  position: relative;
+  overflow: hidden;
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+  border-color: rgba(230, 198, 135, 0.15);
+}
+
+.table-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(140, 102, 255, 0.08) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.table-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.table-header h2 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.table-header p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.deck-area {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+}
+
+/* The Tarot Deck Stack */
+.tarot-deck {
+  position: relative;
+  width: 150px;
+  height: 250px;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.deck-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: var(--color-bg-dark);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.deck-card.c1 { transform: translate(-8px, -8px); opacity: 0.2; }
+.deck-card.c2 { transform: translate(-6px, -6px); opacity: 0.4; }
+.deck-card.c3 { transform: translate(-4px, -4px); opacity: 0.6; }
+.deck-card.c4 { transform: translate(-2px, -2px); opacity: 0.8; }
+.deck-card.c5 {
+  transform: translate(0, 0);
+  background: linear-gradient(135deg, #100a26 0%, #1d143c 100%);
+  border: 1px solid var(--color-gold-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back-pattern {
+  width: 85%;
+  height: 90%;
+  border: 1px solid rgba(230, 198, 135, 0.3);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gold-inner-pattern {
+  width: 70%;
+  height: 80%;
+  border: 1px solid rgba(230, 198, 135, 0.15);
+  border-radius: 6px;
+  background: 
+    radial-gradient(circle, transparent 20%, #150e2e 20%, #150e2e 80%, transparent 80%, transparent),
+    radial-gradient(circle, transparent 20%, #150e2e 20%, #150e2e 80%, transparent 80%, transparent) 50px 50px;
+  background-size: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gold-inner-pattern::after {
+  content: '\f106'; /* FontAwesome Moon */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: var(--color-gold-mid);
+  font-size: 1.8rem;
+  opacity: 0.6;
+}
+
+.deck-glow {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: var(--color-gold-mid);
+  border-radius: 16px;
+  filter: blur(15px);
+  opacity: 0;
+  z-index: -1;
+  transition: var(--transition-normal);
+}
+
+.tarot-deck:hover .deck-glow {
+  opacity: 0.3;
+}
+
+.tarot-deck:hover {
+  transform: translateY(-8px);
+}
+
+.deck-label {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-gold-mid);
+  width: max-content;
+  text-shadow: 0 0 8px rgba(230, 198, 135, 0.4);
+}
+
+/* Dealt Card Space (3D Flip Animation System) */
+.dealt-card-slot {
+  perspective: 1000px;
+  width: 160px;
+  height: 270px;
+  z-index: 10;
+}
+
+.tarot-card-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.tarot-card-3d.flipped {
+  transform: rotateY(180deg);
+}
+
+.dealt-card-slot.reversed .tarot-card-3d {
+  transform: rotateZ(180deg);
+}
+
+.dealt-card-slot.reversed .tarot-card-3d.flipped {
+  transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Card Front (Visual Artwork) */
+.card-front {
+  transform: rotateY(180deg);
+  background: #110e20;
+}
+
+.card-border-gold {
+  border: 2px solid var(--color-gold-mid);
+  height: 100%;
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: inset 0 0 15px rgba(230, 198, 135, 0.2);
+}
+
+.card-header-mini {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-arcana-badge {
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-mid);
+  border: 1px solid rgba(230, 198, 135, 0.3);
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.card-img-container {
+  flex: 1;
+  margin: 4px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(230, 198, 135, 0.15);
+  background: #000;
+}
+
+.card-artwork-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.card-img-shimmer {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+  transform: skewX(-25deg);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% { left: -150%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+
+.card-footer-mini {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.card-footer-mini h3 {
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: -2px;
+}
+
+.card-footer-mini span {
+  font-size: 0.55rem;
+  color: var(--color-gold-mid);
+  letter-spacing: 0.02em;
+}
+
+/* Card Back */
+.card-back {
+  background: linear-gradient(135deg, #0d0822 0%, #19103c 100%);
+  border: 1px solid var(--color-gold-mid);
+  padding: 6px;
+}
+
+.card-back-inner {
+  border: 1px solid rgba(230, 198, 135, 0.3);
+  height: 100%;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gold-seal {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-gold-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-mid);
+  font-size: 1.2rem;
+  background: #110e20;
+  box-shadow: 0 0 10px rgba(230, 198, 135, 0.15);
+}
+
+.gold-corners::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(230, 198, 135, 0.1);
+  pointer-events: none;
+}
+
+.table-actions {
+  position: relative;
+  z-index: 1;
+  margin-top: 2.5rem;
+}
+
+/* Dealt Animation */
+.deal-animation {
+  animation: dealCard 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes dealCard {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(200px) rotate(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
+}
+
+/* 9. Interpretation Panel (Slides in) */
+.interpretation-panel {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.panel-header {
+  margin-bottom: 1.5rem;
+}
+
+.badge {
+  background: var(--color-gold-dark);
+  color: #120d04;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.badge.reversed {
+  background: var(--color-warning);
+}
+
+.panel-header h2 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.card-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(230, 198, 135, 0.12);
+  margin: 1.5rem 0;
+}
+
+.keyword-section h4, .meaning-section h4 {
+  font-size: 0.95rem;
+  color: var(--color-gold-light);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.keyword-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--color-text-main);
+}
+
+.meaning-text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.advice-box {
+  background: rgba(230, 198, 135, 0.04);
+  border-left: 3px solid var(--color-gold-mid);
+  padding: 1.2rem;
+  border-radius: 0 12px 12px 0;
+}
+
+.advice-box h4, .advice-box h5 {
+  font-size: 0.9rem;
+  color: var(--color-gold-mid);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.advice-box p {
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+/* 10. Encyclopedia & Study Center */
+.encyclopedia-header {
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.search-box input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  padding: 1rem 1rem 1rem 3rem;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+.search-box input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--color-gold-mid);
+  box-shadow: 0 0 15px rgba(230, 198, 135, 0.15);
+}
+
+.clear-search {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-muted);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.filter-chip:hover {
+  color: var(--color-text-main);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.filter-chip.active {
+  color: var(--color-gold-light);
+  background: rgba(230, 198, 135, 0.15);
+  border-color: var(--color-gold-mid);
+}
+
+/* Card Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2rem;
+}
+
+/* Study Card Card Item */
+.study-card {
+  cursor: pointer;
+  transition: var(--transition-normal);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.study-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(230, 198, 135, 0.15);
+}
+
+.study-card .card-border-gold {
+  border-color: rgba(230, 198, 135, 0.2);
+}
+
+.study-card:hover .card-border-gold {
+  border-color: var(--color-gold-mid);
+  box-shadow: 0 0 15px rgba(230, 198, 135, 0.15);
+}
+
+.study-card-info {
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.study-card-info h4 {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.study-card-info span {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+/* 11. Detail Study Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1.5rem;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 3rem;
+  animation: modalScaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: rgba(255,255,255,0.15);
+  transform: rotate(90deg);
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 3rem;
+}
+
+.tarot-card-showcase {
+  width: 100%;
+  max-width: 220px;
+  height: 380px;
+  margin: 0 auto;
+}
+
+.modal-right h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.modal-sections {
+  margin-top: 1.5rem;
+}
+
+/* Study Modal Tabs */
+.modal-tab-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 4px;
+  border-radius: 30px;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: var(--transition-fast);
+}
+
+.modal-tab-btn.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.modal-tab-content {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-tab-content.active {
+  display: block;
+}
+
+.study-section {
+  margin-bottom: 1.5rem;
+}
+
+.study-section h5 {
+  font-size: 0.9rem;
+  color: var(--color-gold-light);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+
+/* 12. History Dashboard */
+.history-container {
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.history-header h2 {
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.history-header p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  flex-basis: 100%;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(230, 198, 135, 0.08);
+  transition: var(--transition-normal);
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(230, 198, 135, 0.2);
+  transform: translateX(5px);
+}
+
+.history-thumb {
+  width: 45px;
+  height: 75px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--color-gold-mid);
+  margin-right: 1.5rem;
+}
+
+.history-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-info h4 {
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.history-info p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.history-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 8px;
+  margin-right: 1.5rem;
+}
+
+.history-time {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.no-history {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-muted);
+}
+
+.no-history i {
+  font-size: 3rem;
+  color: rgba(230, 198, 135, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.no-history p {
+  font-size: 1rem;
+}
+
+/* 13. App Footer */
+.app-footer {
+  text-align: center;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(230, 198, 135, 0.08);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* 14. Responsive Layout Media Queries */
+@media (max-width: 900px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .app-header {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1rem 0;
+  }
+  
+  .app-nav {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+  
+  .reading-container.active-drawn {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .tarot-card-showcase {
+    max-width: 180px;
+    height: 300px;
+  }
+  
+  .modal-content {
+    padding: 2rem;
+  }
+  
+  .history-item {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  
+  .history-time {
+    width: 100%;
+    text-align: right;
+  }
+}
+
+/* Utility Hidden & Skeleton Classes */
+.hidden {
+  display: none !important;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+/* ==========================================================================
+   MULTI-SPREAD BOARD & ADVANCED CELLTIC CROSS LAYOUTS
+   ========================================================================== */
+
+/* Spread Selector Styles */
+.spread-selector {
+  margin-bottom: 2rem;
+  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.selector-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.spread-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.spread-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 1.1rem;
+  border-radius: 20px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.spread-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.spread-chip.active {
+  background: rgba(230, 198, 135, 0.15);
+  border-color: var(--color-gold-mid);
+  color: var(--color-gold-light);
+  box-shadow: 0 0 10px rgba(230, 198, 135, 0.1);
+}
+
+/* Spread Board & Grid Systems */
+.spread-board {
+  width: 100%;
+  transition: var(--transition-normal);
+  margin-top: 1rem;
+}
+
+/* Spread 1: One Card Draw */
+.spread-board.spread-1 {
+  display: grid;
+  grid-template-columns: minmax(130px, 150px);
+  justify-content: center;
+}
+
+.spread-board.spread-1 .slot-card-container {
+  width: 130px;
+  height: 220px;
+}
+
+/* Spread 3: Past, Present, Future */
+.spread-board.spread-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(110px, 130px));
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.spread-board.spread-3 .slot-card-container {
+  width: 110px;
+  height: 185px;
+}
+
+/* Spread 4: Relationship Square */
+.spread-board.spread-4 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(110px, 130px));
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.spread-board.spread-4 .slot-card-container {
+  width: 110px;
+  height: 185px;
+}
+
+/* Spread 5: Energy & Advice Cross */
+.spread-board.spread-5 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 120px));
+  grid-template-rows: repeat(3, auto);
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Dynamic grid positioning for Spread 5 */
+.spread-board.spread-5 [data-slot="1"] { grid-row: 2; grid-column: 1; } /* Energy */
+.spread-board.spread-5 [data-slot="2"] { grid-row: 2; grid-column: 2; } /* Obstacle */
+.spread-board.spread-5 [data-slot="3"] { grid-row: 2; grid-column: 3; } /* Action */
+.spread-board.spread-5 [data-slot="4"] { grid-row: 1; grid-column: 2; } /* Advice */
+.spread-board.spread-5 [data-slot="5"] { grid-row: 3; grid-column: 2; } /* Outcome */
+
+.spread-board.spread-5 .slot-card-container {
+  width: 100px;
+  height: 170px;
+}
+
+/* Spread 10: The Classic Celtic Cross Layout */
+.spread-board.spread-10 {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 950px;
+  width: 100%;
+}
+
+.celtic-cross-left {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 105px));
+  grid-template-rows: repeat(3, auto);
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.celtic-cross-right {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px dashed rgba(230, 198, 135, 0.15);
+  padding-left: 2rem;
+}
+
+/* Grid assignments for Left Cross */
+.celtic-cross-left [data-slot="5"] { grid-row: 1; grid-column: 2; } /* Conscious Goal */
+.celtic-cross-left [data-slot="4"] { grid-row: 2; grid-column: 1; } /* Recent Past */
+.celtic-cross-left [data-slot="1_2_container"] { 
+  grid-row: 2; 
+  grid-column: 2; 
+  position: relative; 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.celtic-cross-left [data-slot="6"] { grid-row: 2; grid-column: 3; } /* Near Future */
+.celtic-cross-left [data-slot="3"] { grid-row: 3; grid-column: 2; } /* Subconscious Foundation */
+
+/* Custom stacking styles for Card 1 & Card 2 overlay in Celtic Cross */
+.celtic-center-slot-1 {
+  position: relative;
+  z-index: 1;
+}
+
+.celtic-center-slot-2 {
+  position: absolute !important;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: 90px !important; /* 세로 표준비율 동일 규격 */
+  height: 150px !important; /* 세로 표준비율 동일 규격 */
+  transform: translate(-50%, -50%); /* 중앙 정렬만 유지, 회전은 JS에서 일괄 처리 */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  transition: var(--transition-normal);
+}
+
+.celtic-center-slot-2 .slot-card-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.celtic-center-slot-2 .slot-label-top {
+  position: absolute;
+  top: 10px; /* 회전된 카드 가로 상단 영역에 정확히 겹치도록 보정 */
+  left: 50%;
+  transform: translateX(-50%); /* 불필요한 카운터 회전 제거 */
+  background: rgba(15, 11, 32, 0.85);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.spread-board.spread-10 .slot-card-container {
+  width: 90px;
+  height: 150px;
+}
+
+/* Card Slot Elements */
+.dealt-card-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slotFadeIn 0.5s ease forwards;
+}
+
+.dealt-card-slot.slot-revealed .slot-card-container {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.dealt-card-slot.active-focus .slot-card-container {
+  box-shadow: 0 0 20px rgba(230, 198, 135, 0.4);
+  transform: scale(1.04);
+  border: 1px solid var(--color-gold-mid);
+  border-radius: 12px;
+}
+
+@keyframes slotFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slot-label-top {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-gold-mid);
+  margin-bottom: 0.4rem;
+  text-align: center;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+.slot-card-container {
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.slot-card-container:hover {
+  transform: translateY(-5px);
+}
+
+/* Summary Chips in Panel */
+.drawn-cards-summary-list {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.4rem 0;
+  margin-bottom: 0.8rem;
+  scrollbar-width: thin;
+}
+
+.drawn-cards-summary-list::-webkit-scrollbar {
+  height: 4px;
+}
+
+.drawn-cards-summary-list::-webkit-scrollbar-thumb {
+  background: rgba(230, 198, 135, 0.2);
+  border-radius: 10px;
+}
+
+.summary-item-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.summary-item-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.summary-item-chip.active {
+  background: rgba(230, 198, 135, 0.12);
+  border-color: var(--color-gold-mid);
+  color: var(--color-gold-light);
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(230, 198, 135, 0.15);
+}
+
+.summary-item-chip.flipped {
+  border-color: rgba(0, 240, 255, 0.3);
+  color: #fff;
+}
+
+.summary-item-chip i {
+  font-size: 0.75rem;
+}
+
+/* Focused card styling */
+.focused-card-details {
+  animation: fadeIn 0.4s ease;
+}
+
+.focused-header {
+  margin-bottom: 1.2rem;
+}
+
+.focused-header h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-top: 0.2rem;
+}
+
+/* History thumbnail adjustments for multiple cards */
+.history-item-spread-thumbs {
+  display: flex;
+  gap: 0.3rem;
+  margin-right: 1.5rem;
+  background: rgba(0,0,0,0.2);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.history-item-spread-thumbs .mini-thumb {
+  width: 25px;
+  height: 42px;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 0.5px solid rgba(230, 198, 135, 0.4);
+}
+
+.history-item-spread-thumbs .mini-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Overrides for Spreads (Mobile & Tablet Optimization) */
+@media (max-width: 800px) {
+  /* 전역 여백 축소로 모바일 최적 가용폭 극대화 */
+  .app-container {
+    padding: 0 0.75rem !important;
+  }
+  
+  .app-main {
+    padding: 1.5rem 0 !important;
+  }
+
+  /* 오늘의 타로 (1장) 모바일 크기 최적화 (드로우 전후 통일감) */
+  .spread-board.spread-1 {
+    grid-template-columns: minmax(95px, 110px) !important;
+    justify-content: center;
+  }
+  .spread-board.spread-1 .slot-card-container {
+    width: 95px !important;
+    height: 160px !important;
+  }
+
+  .spread-board.spread-3 {
+    grid-template-columns: repeat(3, minmax(70px, 90px)) !important;
+    gap: 0.5rem !important;
+  }
+  .spread-board.spread-3 .slot-card-container {
+    width: 70px !important;
+    height: 115px !important;
+  }
+  
+  .spread-board.spread-4 {
+    grid-template-columns: repeat(2, minmax(80px, 100px)) !important;
+    gap: 0.8rem !important;
+  }
+  .spread-board.spread-4 .slot-card-container {
+    width: 80px !important;
+    height: 130px !important;
+  }
+
+  .spread-board.spread-5 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(65px, 85px)) !important;
+    grid-template-rows: repeat(3, auto) !important;
+    gap: 0.5rem !important;
+  }
+  .spread-board.spread-5 .slot-card-container {
+    width: 65px !important;
+    height: 105px !important;
+  }
+
+  .spread-board.spread-10 {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .celtic-cross-left {
+    grid-template-columns: repeat(3, minmax(65px, 75px)) !important;
+    gap: 0.4rem !important;
+    width: max-content !important;
+  }
+  
+  .spread-board.spread-10 .slot-card-container {
+    width: 65px !important;
+    height: 110px !important;
+  }
+
+  .celtic-cross-right {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    border-left: none !important;
+    border-top: 1px dashed rgba(230, 198, 135, 0.15) !important;
+    padding-left: 0 !important;
+    padding-top: 1.5rem !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  /* 켈틱 크로스 2번 슬롯 모바일 왜곡 완전 제거 */
+  .celtic-center-slot-2 {
+    width: 65px !important;
+    height: 110px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .celtic-center-slot-2 .slot-label-top {
+    font-size: 0.52rem !important;
+    top: 5px !important;
+  }
+
+  .slot-label-top {
+    font-size: 0.55rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+  
+  /* App Header & Nav on Mobile */
+  .app-header {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding: 1rem 0 !important;
+  }
+
+  /* 모바일 최적화 스와이프 내비게이션, 분석 칩, 도감 필터 통합 */
+  .app-nav, .spread-chips, .filter-chips {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    padding-bottom: 0.4rem !important;
+    justify-content: flex-start !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 0.5rem !important;
+  }
+  
+  .app-nav::-webkit-scrollbar, .spread-chips::-webkit-scrollbar, .filter-chips::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  .nav-link, .spread-chip, .filter-chip {
+    flex: 0 0 auto !important;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1.0rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .spread-selector {
+    padding: 1rem !important;
+    gap: 0.8rem !important;
+  }
+
+  .selector-label {
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  /* Table Deck adjustments on Mobile */
+  .tarot-table .tarot-deck {
+    width: 95px !important;
+    height: 160px !important;
+  }
+  .tarot-table .deck-label {
+    font-size: 0.65rem !important;
+    bottom: -28px !important;
+  }
+  
+  /* Velvet table padding reduction */
+  .tarot-table {
+    padding: 2rem 1rem 3rem !important;
+    min-height: auto !important;
+  }
+
+  /* Sub-tab encyclopedia grids */
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+    gap: 0.8rem !important;
+  }
+  .study-card {
+    padding: 6px !important;
+  }
+  .study-card .card-border-gold {
+    padding: 4px !important;
+  }
+  .study-card .card-footer-mini h3 {
+    font-size: 0.78rem !important;
+  }
+  .study-card .card-footer-mini span {
+    font-size: 0.52rem !important;
+  }
+  
+  /* Synthesis Panel box adjustments */
+  .element-distribution {
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+  }
+  .element-bar {
+    width: 100% !important;
+  }
+  
+  /* History layout adjustments */
+  .history-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 1.2rem !important;
+    gap: 0.8rem !important;
+  }
+  .history-item-spread-thumbs {
+    margin-right: 0 !important;
+  }
+  .history-badge {
+    margin-right: 0 !important;
+    align-self: flex-start !important;
+  }
+  .history-time {
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* 상세 백과사전 모달 글자 크기 보정 */
+  .modal-right h2 {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* ==========================================================================
+   ENCYCLOPEDIA SUB-TABS & COMBINATION STUDY STYLING
+   ========================================================================== */
+
+/* Encyclopedia Sub-tabs Nav */
+.encyclopedia-tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 6px;
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  max-width: 500px;
+}
+
+.encyclopedia-tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: 0.8rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.encyclopedia-tab-btn.active {
+  color: var(--color-gold-light);
+  background: rgba(230, 198, 135, 0.15);
+  border: 1px solid rgba(230, 198, 135, 0.25);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.subtab-content {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.subtab-content.active {
+  display: block;
+}
+
+/* Combination Guide Styling */
+.combination-guide-container {
+  padding: 2rem 0;
+}
+
+.guide-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.guide-intro h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+}
+
+.guide-intro p {
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.guide-sections-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.guide-block {
+  background: rgba(255,255,255,0.01);
+  border: 1px solid rgba(230, 198, 135, 0.08);
+  padding: 2.2rem;
+  border-radius: 16px;
+}
+
+.guide-block h4 {
+  font-size: 1.2rem;
+  color: var(--color-gold-light);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guide-block p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.guide-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.guide-list li {
+  background: rgba(0,0,0,0.15);
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px dashed rgba(230, 198, 135, 0.1);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.guide-list li strong {
+  color: var(--color-gold-mid);
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.synergy-formulas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.formula {
+  background: rgba(230, 198, 135, 0.03);
+  border-left: 3px solid var(--color-gold-mid);
+  padding: 1.2rem;
+  border-radius: 0 12px 12px 0;
+}
+
+.formula h5 {
+  font-size: 1rem;
+  color: var(--color-gold-light);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.formula p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.guide-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.guide-steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.guide-steps li strong {
+  color: var(--color-gold-light);
+}
+
+/* Combination Synthesis Panel Section */
+.combination-synthesis-section {
+  animation: fadeIn 0.5s ease;
+}
+
+.synthesis-header {
+  margin-bottom: 1.2rem;
+}
+
+.synthesis-header h4 {
+  font-size: 1rem;
+  color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.synthesis-box {
+  background: rgba(140, 102, 255, 0.03);
+  border: 1px dashed rgba(140, 102, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.element-distribution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.element-bar {
+  flex: 1;
+  min-width: 100px;
+}
+
+.element-label {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.element-progress-bg {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.element-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.fill-major { background: linear-gradient(to right, var(--color-violet), #c850c0); }
+.fill-wands { background: linear-gradient(to right, #ff416c, #ff4b2b); }
+.fill-cups { background: linear-gradient(to right, #17ad97, #36ed83); }
+.fill-swords { background: linear-gradient(to right, #00b4db, #0083b0); }
+.fill-pentacles { background: linear-gradient(to right, var(--color-gold-mid), #b8860b); }
+
+.synthesis-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-main);
+  background: rgba(255, 255, 255, 0.01);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 2px solid var(--color-violet);
+}
+
