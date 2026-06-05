@@ -1709,32 +1709,32 @@ h1, h2, h3, .logo-text {
   }
 
   .spread-board.spread-3 {
-    grid-template-columns: repeat(3, minmax(70px, 90px)) !important;
+    grid-template-columns: repeat(3, minmax(85px, 95px)) !important;
     gap: 0.5rem !important;
   }
   .spread-board.spread-3 .slot-card-container {
-    width: 70px !important;
-    height: 115px !important;
+    width: 85px !important;
+    height: 142px !important;
   }
   
   .spread-board.spread-4 {
-    grid-template-columns: repeat(2, minmax(80px, 100px)) !important;
+    grid-template-columns: repeat(2, minmax(95px, 105px)) !important;
     gap: 0.8rem !important;
   }
   .spread-board.spread-4 .slot-card-container {
-    width: 80px !important;
-    height: 130px !important;
+    width: 95px !important;
+    height: 160px !important;
   }
 
   .spread-board.spread-5 {
     display: grid;
-    grid-template-columns: repeat(3, minmax(65px, 85px)) !important;
+    grid-template-columns: repeat(3, minmax(80px, 90px)) !important;
     grid-template-rows: repeat(3, auto) !important;
     gap: 0.5rem !important;
   }
   .spread-board.spread-5 .slot-card-container {
-    width: 65px !important;
-    height: 105px !important;
+    width: 80px !important;
+    height: 135px !important;
   }
 
   .spread-board.spread-10 {
@@ -1745,14 +1745,14 @@ h1, h2, h3, .logo-text {
   }
   
   .celtic-cross-left {
-    grid-template-columns: repeat(3, minmax(65px, 75px)) !important;
+    grid-template-columns: repeat(3, minmax(75px, 85px)) !important;
     gap: 0.4rem !important;
     width: max-content !important;
   }
   
   .spread-board.spread-10 .slot-card-container {
-    width: 65px !important;
-    height: 110px !important;
+    width: 75px !important;
+    height: 125px !important;
   }
 
   .celtic-cross-right {
@@ -1770,8 +1770,8 @@ h1, h2, h3, .logo-text {
 
   /* 켈틱 크로스 2번 슬롯 모바일 왜곡 완전 제거 */
   .celtic-center-slot-2 {
-    width: 65px !important;
-    height: 110px !important;
+    width: 75px !important;
+    height: 125px !important;
     transform: translate(-50%, -50%) !important;
   }
 
