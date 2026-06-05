@@ -2142,3 +2142,20 @@ h1, h2, h3, .logo-text {
   border-left: 2px solid var(--color-violet);
 }
 
+/* 테이블 보드 카드 전용: 이미지를 100% 가득 채우고 크롭 없이 우선 표시 (글자/배지 영역 제거) */
+.spread-board .card-header-mini,
+.spread-board .card-footer-mini {
+  display: none !important;
+}
+
+.spread-board .card-img-container {
+  margin: 0 !important;
+  height: 100% !important;
+  border: none !important; /* 이미지 몰입을 위해 컨테이너 내부 테두리 제거 */
+}
+
+.spread-board .card-border-gold {
+  padding: 0 !important; /* 카드 테두리 내부 여백을 없애서 이미지 가득 채움 */
+  overflow: hidden;
+}
+
