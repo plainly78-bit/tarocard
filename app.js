@@ -358,7 +358,7 @@ function dealNextCard() {
   if (!slotEl) return;
 
   const cardImg = slotEl.querySelector('.card-artwork-img');
-  cardImg.src = `https://raw.githubusercontent.com/metabismuth/tarot-json/master/cards/${randomCard.img}`;
+  cardImg.src = `https://cdn.jsdelivr.net/gh/metabismuth/tarot-json@master/cards/${randomCard.img}`;
   
   slotEl.querySelector('.slot-reveal-name-ko').textContent = randomCard.nameKo;
   slotEl.querySelector('.slot-reveal-name-en').textContent = randomCard.nameEn;
@@ -780,7 +780,7 @@ function renderEncyclopedia() {
           <span class="card-arcana-badge">${card.type.toUpperCase()}</span>
         </div>
         <div class="card-img-container">
-          <img src="https://raw.githubusercontent.com/metabismuth/tarot-json/master/cards/${card.img}" alt="${card.nameKo}" class="card-artwork-img" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/metabismuth/tarot-json@master/cards/${card.img}" alt="${card.nameKo}" class="card-artwork-img" loading="lazy">
         </div>
         <div class="card-footer-mini">
           <h3>${card.nameKo}</h3>
@@ -809,7 +809,7 @@ function openStudyModal(cardId) {
   else if (card.suit === 'pentacles') suitKo = '펜타클 (Pentacles)';
   elements.modalSuit.textContent = suitKo;
 
-  elements.modalCardImg.src = `https://raw.githubusercontent.com/metabismuth/tarot-json/master/cards/${card.img}`;
+  elements.modalCardImg.src = `https://cdn.jsdelivr.net/gh/metabismuth/tarot-json@master/cards/${card.img}`;
   elements.modalCardArcana.textContent = card.type.toUpperCase();
   elements.modalCardNameKo.textContent = card.nameKo;
   elements.modalCardNameEn.textContent = card.nameEn;
@@ -884,7 +884,7 @@ function renderHistory() {
       if (cardObj) {
         thumbsHTML += `
           <div class="mini-thumb" title="${cardObj.nameKo}">
-            <img src="https://raw.githubusercontent.com/metabismuth/tarot-json/master/cards/${cardObj.img}" alt="${cardObj.nameKo}">
+            <img src="https://cdn.jsdelivr.net/gh/metabismuth/tarot-json@master/cards/${cardObj.img}" alt="${cardObj.nameKo}">
           </div>
         `;
       }
@@ -935,7 +935,7 @@ function renderHistory() {
         const slotEl = document.getElementById(`slot-${idx + 1}`);
         const cardEl = slotEl.querySelector('.tarot-card-3d');
         
-        slotEl.querySelector('.card-artwork-img').src = `https://raw.githubusercontent.com/metabismuth/tarot-json/master/cards/${cardObj.img}`;
+        slotEl.querySelector('.card-artwork-img').src = `https://cdn.jsdelivr.net/gh/metabismuth/tarot-json@master/cards/${cardObj.img}`;
         slotEl.querySelector('.slot-reveal-name-ko').textContent = cardObj.nameKo;
         slotEl.querySelector('.slot-reveal-name-en').textContent = cardObj.nameEn;
         slotEl.querySelector('.card-arcana-badge').textContent = cardObj.type.toUpperCase();
